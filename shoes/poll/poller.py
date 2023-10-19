@@ -19,7 +19,7 @@ def poll():
         print('Shoes poller polling for data')
         try:
             response = requests.get("http://wardrobe-api:8000/api/bins")
-            content =json.loads(response.content)
+            content = json.loads(response.content)
             for bin in content["bins"]:
                 print(bin, "this is poller")
                 BinVO.objects.update_or_create(

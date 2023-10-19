@@ -11,7 +11,7 @@ class BinVODetailEncoder(ModelEncoder):
     properties = [
         "closet_name",
         "bin_number",
-        "bin_size"
+        "bin_size",
         "import_href"
     ]
 
@@ -20,7 +20,16 @@ class ShoesListEncoder(ModelEncoder):
     properties = [
         "manufacturer",
         "model_name",
+        "color",
+        "picture_url",
+        "id",
+        "wardrobe_bin"
     ]
+
+    encoders = {
+        "wardrobe_bin": BinVODetailEncoder(),
+    }
+
     # def get_extra_data(self, o):
     #     return {"bin_number": o.wardrobe_bin.bin_number, "closet_name": o.wardrobe_bin.closet_name} #wardrobe_bin is from shoes_rest/models.py, how is it getting the bin_number and closet_name
 
@@ -32,11 +41,11 @@ class ShoesDetailEncoder(ModelEncoder):
         "model_name",
         "color",
         "picture_url",
-        "bin"
+        "wardrobe_bin"
     ]
 
     encoders = {
-        "bin": BinVODetailEncoder(),
+        "wardrobe_bin": BinVODetailEncoder(),
     }
 
 @require_http_methods(["GET", "POST"])
@@ -54,9 +63,9 @@ def api_list_shoes(request, bin_vo_id=None):
         content = json.loads(request.body)
 
         try:
-            bin_href = content["bin"]
+            bin_href = content["wardrobe_bin"]
             wardrobe_bin = BinVO.objects.get(import_href=bin_href["import_href"])
-            content["bin"] = wardrobe_bin
+            content["wardrobe_bin"] = wardrobe_bin
         except BinVO.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid bin"},
