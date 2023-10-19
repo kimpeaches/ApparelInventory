@@ -30,10 +30,6 @@ class ShoesListEncoder(ModelEncoder):
         "wardrobe_bin": BinVODetailEncoder(),
     }
 
-    # def get_extra_data(self, o):
-    #     return {"bin_number": o.wardrobe_bin.bin_number, "closet_name": o.wardrobe_bin.closet_name} #wardrobe_bin is from shoes_rest/models.py, how is it getting the bin_number and closet_name
-
-
 class ShoesDetailEncoder(ModelEncoder):
     model = Shoes
     properties = [
@@ -64,7 +60,7 @@ def api_list_shoes(request, bin_vo_id=None):
 
         try:
             bin_href = content["wardrobe_bin"]
-            wardrobe_bin = BinVO.objects.get(import_href=bin_href["import_href"])
+            wardrobe_bin = BinVO.objects.get(import_href=bin_href)
             content["wardrobe_bin"] = wardrobe_bin
         except BinVO.DoesNotExist:
             return JsonResponse(

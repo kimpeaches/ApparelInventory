@@ -46,7 +46,7 @@ function ShoesList() {
         {shoes.map(shoe => {
           return (
             <tr key={shoe.id}>
-              <td><img src={shoe.picture_url} alt="" style={{ width: '100px', height: '100px' }} /></td>
+              <td><img src={shoe.picture_url} alt="Shoe" style={{ width: '100px', height: '100px' }} /></td>
               <td>{ shoe.model_name }</td>
               <td>{ shoe.color }</td>
               <td>{ shoe.manufacturer }</td>
