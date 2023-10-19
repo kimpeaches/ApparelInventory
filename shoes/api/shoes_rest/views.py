@@ -64,7 +64,7 @@ def api_list_shoes(request, bin_vo_id=None):
 
         try:
             bin_href = content["wardrobe_bin"]
-            wardrobe_bin = BinVO.objects.get(import_href=bin_href["import_href"])
+            wardrobe_bin = BinVO.objects.get(import_href=bin_href)
             content["wardrobe_bin"] = wardrobe_bin
         except BinVO.DoesNotExist:
             return JsonResponse(
@@ -79,7 +79,7 @@ def api_list_shoes(request, bin_vo_id=None):
         )
 
 
-@require_http_methods(["GET", "DELETE"])
+@require_http_methods(["GET", "DELETE", "PUT"])
 def api_show_shoes(request, pk):
     if request.method == "GET":
         shoes = Shoes.objects.get(id=pk)
@@ -88,6 +88,27 @@ def api_show_shoes(request, pk):
             encoder=ShoesDetailEncoder,
             safe=False,
         )
-    else:
+    elif request.method == "DELETE":
         count, _ = Shoes.objects.filter(id=pk).delete()
         return JsonResponse({"deleted":count > 0 })
+    else:
+
+        content = json.loads(request.body)
+
+        try:
+            if "wardrobe_bin"in content:
+                wardrobe_bin = BinVO.objects.get(href=content["wardrobe_bin"])
+                content["wardrobe_bin"] = wardrobe_bin
+        except BinVO.DoesNotExist:
+                return JsonResponse(
+                    {"message": "Invalid location id"},
+                    status=400,
+                )
+
+        Shoes.objects.filter(id=pk).update(**content)
+        shoes = Shoes.objects.get(id=pk)
+        return JsonResponse(
+            shoes,
+            encoder=ShoesDetailEncoder,
+            safe=False,
+        )

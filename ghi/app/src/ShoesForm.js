@@ -1,5 +1,6 @@
 import React from 'react';
 
+function ShoesForm(props) {
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -24,7 +25,7 @@ const handleSubmit = async (e) => {
     }
 }
 
-function ShoesForm(props) {
+
     return (
         <form onSubmit={handleSubmit}>
             <input name="manufacturer" placeholder="manufacturer" />
