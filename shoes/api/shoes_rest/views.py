@@ -30,10 +30,6 @@ class ShoesListEncoder(ModelEncoder):
         "wardrobe_bin": BinVODetailEncoder(),
     }
 
-    # def get_extra_data(self, o):
-    #     return {"bin_number": o.wardrobe_bin.bin_number, "closet_name": o.wardrobe_bin.closet_name} #wardrobe_bin is from shoes_rest/models.py, how is it getting the bin_number and closet_name
-
-
 class ShoesDetailEncoder(ModelEncoder):
     model = Shoes
     properties = [
