@@ -31,34 +31,32 @@ function ShoesList() {
 
     console.log(shoes)
 
-    return (
-    <table className="table table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Shoe</th>
-          <th>Model</th>
-          <th>Color</th>
-          <th>Manufacturer</th>
-          <th>Bin</th>
-        </tr>
-      </thead>
-      <tbody>
-        {shoes.map(shoe => {
-          return (
-            <tr key={shoe.id}>
-              <td><img src={shoe.picture_url} alt="Shoe" style={{ width: '100px', height: '100px' }} /></td>
-              <td>{ shoe.model_name }</td>
-              <td>{ shoe.color }</td>
-              <td>{ shoe.manufacturer }</td>
-              <td>{ shoe.wardrobe_bin.closet_name }</td>
-              <td><button onClick={() => deleteShoe(shoe.id)} type="delete-button" className="btn btn-outline-danger">Delete</button></td>
-            </tr>
-
-          );
-        })}
-      </tbody>
-    </table>
-    );
+return (
+    <div className="container">
+      <div className="row">
+        {shoes.map((shoe) => (
+          <div className="col-md-4" key={shoe.id}>
+            <div className="card mt-4">
+              <img src={shoe.picture_url} className="card-img-top" alt="Shoe" />
+              <div className="card-body">
+                <h5 className="card-title">{shoe.model_name}</h5>
+                <p className="card-text">Color: {shoe.color}</p>
+                <p className="card-text">Manufacturer: {shoe.manufacturer}</p>
+                <p className="card-text">Bin: {shoe.wardrobe_bin.closet_name}</p>
+                <button
+                  onClick={() => deleteShoe(shoe.id)}
+                  type="delete-button"
+                  className="btn btn-outline-danger"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default ShoesList;

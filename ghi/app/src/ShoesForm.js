@@ -42,21 +42,38 @@ const handleSubmit = async (e) => {
     }, []);
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input name="manufacturer" placeholder="manufacturer" />
-            <input name="model_name" placeholder="model_name" />
-            <input name="color" placeholder="color" />
-            <select name="wardrobe_bin" id="wardrobe_bin" required>
-                <option value="">Choose a bin</option>
-                {bins.map(bin => {
-                    return (
-                        <option key={bin.id} value={bin.href}>{bin.id}</option>
-                    )
-                })}
-            </select>
-            <button className="btn btn-primary">Create</button>
-        </form>
-    )
-}
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3">
+              <div className="card mt-4">
+                <div className="card-body">
+                  <h3 className="card-title">Add a Pair of Shoes</h3>
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-3">
+                      <input type="text" className="form-control" name="manufacturer" placeholder="Manufacturer"/>
+                    </div>
+                    <div className="mb-3">
+                      <input type="text" className="form-control" name="model_name" placeholder="Model Name"/>
+                    </div>
+                    <div className="mb-3">
+                      <input type="text" className="form-control" name="color" placeholder="Color"/>
+                    </div>
+                    <div className="mb-3">
+                      <select className="form-select" name="wardrobe_bin" id="wardrobe_bin" required>
+                        <option value="">Choose a bin</option>
+                        {bins.map((bin) => (<option key={bin.id} value={bin.href}> {bin.id} </option> ))}
+                      </select>
+                    </div>
+                    <button type="submit" className="btn btn-primary">
+                      Create
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
 export default ShoesForm;
