@@ -31,11 +31,10 @@ values to store the created hats in a specific location through poller.py after
 polling and it has all the data from Wardrobe Microservice. Hats has 5 values
 (fabric, style, color, picture_URL and location). User will input into the
 values that will bestored in Hats Microservice and will be shown in the webpage.
-
-
-Hats has 5 values(fabric, style, color, picture_URL and location). User will input into the values that will be stored in Hats Microservice and will be shown in the webpage.
-
-Hats Microservice will run on http://localhost:8090/api/hats/ to complete the following RESTful API request ("GET", "POST", "DELETE", "PUT").
+Hats has 5 values(fabric, style, color, picture_URL and location). User will input
+into the values that will be stored in Hats Microservice and will be shown in the webpage.
+Hats Microservice will run on http://localhost:8090/api/hats/ to complete the following
+RESTful API request ("GET", "POST", "DELETE", "PUT").
 
 **LOCATION**
 
