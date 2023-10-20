@@ -9,6 +9,14 @@ import HatList from './HatList';
 
 function App() {
   return (
+    <div style={{
+      backgroundImage: `url("https://images.unsplash.com/photo-1642418423389-fff4d83d28a4?auto=format&fit=crop&q=80&w=1867&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      minHeight: "100vh",
+      backgroundPosition: "center",
+      backgroundAttachment: "fixed"
+    }}>
     <BrowserRouter>
       <Nav />
       <div className="container">
@@ -21,6 +29,7 @@ function App() {
         </Routes>
       </div>
     </BrowserRouter>
+    </div>
   );
 }
 

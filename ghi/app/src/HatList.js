@@ -31,34 +31,34 @@ function HatList() {
 
 
     return (
-        <table className="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Hat</th>
-                    <th>Fabric</th>
-                    <th>Style</th>
-                    <th>Color</th>
-                    <th>Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                {hats.map(hat => {
-                    return (
-                        <tr key={hat.id}>
-                            <td><img src={hat.picture_url} style={{ width: 60, height: 60 }}alt="" /></td>
-                            <td>{hat.fabric}</td>
-                            <td>{hat.style}</td>
-                            <td>{hat.color}</td>
-                            <td>{hat.location.closet_name}</td>
-                            <td><button onClick={() => onDeleteHat(hat.id)}>Delete</button></td>
-
-                        </tr>
-                    );
-                })}
-
-            </tbody>
-        </table>
-    )
+        <div className="container">
+            <h5 className="card-title">Hat Table</h5>
+            <div className="row">
+                {hats.map(hat => (
+                    <div key={hat.id} className="col-md-4 mb-4">
+                        <div className="card bg-transparent">
+                            <img
+                                src={hat.picture_url}
+                                className="card-img-top"
+                                alt=""
+                            />
+                            <div className="card-body">
+                                <h5 className="card-title">{hat.fabric}</h5>
+                                <p className="card-text">Style: {hat.style}</p>
+                                <p className="card-text">Color: {hat.color}</p>
+                                <p className="card-text">Location: {hat.location.closet_name}</p>
+                                <button
+                                    onClick={() => onDeleteHat(hat.id)}
+                                    className="btn btn-danger"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 }
-
 export default HatList
