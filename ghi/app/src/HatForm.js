@@ -57,6 +57,10 @@ function HatForm(props) {
                   <input type="text" className="form-control" name="color" id="color" placeholder="Color" />
                 </div>
                 <div className="form-group">
+                  <label htmlFor="url">Picture:</label>
+                  <input type="url" className="form-control" name="url" id="url" placeholder="url" />
+                </div>
+                <div className="form-group">
                   <label htmlFor="location">Location:</label>
                   <select className="form-control" name="location" id="location" required>
                     <option value="">Choose a location</option>
