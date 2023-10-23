@@ -24,6 +24,7 @@ function ShoesForm(props) {
       console.log(newShoe)
       e.target.reset();
     }
+    debugger
   }
 
 
@@ -57,10 +58,6 @@ function ShoesForm(props) {
                 </div>
                 <div className="mb-3">
                   <input type="text" className="form-control" name="color" placeholder="Color" />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="url">Picture:</label>
-                  <input type="url" className="form-control" name="url" id="url" placeholder="url" />
                 </div>
                 <div className="mb-3">
                   <select className="form-select" name="wardrobe_bin" id="wardrobe_bin" required>

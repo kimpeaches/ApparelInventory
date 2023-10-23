@@ -219,3 +219,5 @@ C. Delete a hat using this URL http://localhost:8090/api/hats/ plus the specific
     }
 
 ## Backend Diagram
+
+![Backend diagram](./backend-diagram.png)
